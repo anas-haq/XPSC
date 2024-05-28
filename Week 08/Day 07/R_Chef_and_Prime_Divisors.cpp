@@ -1,44 +1,39 @@
 /*
     Author: Anas
-    Date:   16-05-2024
-    Time:   18:41:39
+    Date:   28-05-2024
+    Time:   16:58:18
     File:   R_Chef_and_Prime_Divisors.cpp
 */
 #include <bits/stdc++.h>
-#define ll long long
-using namespace std;
-bool isDivisibleByAllPrimeDivisors(ll a, ll b)
-{
-    for (ll i = 2; i * i <= b; ++i)
-    {
-        while (b % i == 0)
-        {
-            if (a % i != 0)
-            {
-                return false;
-            }
-            b /= i;
-        }
-    }
-    if (b > 1 && a % b != 0)
-    {
-        return false;
-    }
-    return true;
-}
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 
-int main()
+using namespace __gnu_pbds;
+using namespace std;
+
+#define ll long long
+
+template <typename T> using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+int main() 
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
+    
     ll t;
-    cin >> t;
+    cin>>t;
     while (t--)
     {
-
-        ll a, b;
-        cin >> a >> b;
-        cout << (isDivisibleByAllPrimeDivisors(a, b) ? "Yes" : "No") << '\n';
+        ll a,b;
+        cin>>a>>b;
+        ll ans=__gcd(a,b);
+        while (ans!=1)
+        {
+           b/= ans;
+           ans=__gcd(a,b);
+        }
+        cout<<((b==1)?"Yes":"No")<<'\n';        
     }
+    
     return 0;
 }
