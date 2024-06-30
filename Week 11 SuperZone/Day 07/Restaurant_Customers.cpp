@@ -2,7 +2,6 @@
     Author: Anas
     Date:   06-06-2024
     Time:   11:26:54
-    File:   C_Two_TVs.cpp
 */
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
